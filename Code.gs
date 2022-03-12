@@ -42,7 +42,8 @@ function myFunction() {
 }
 
 function addMember(email, group) {
-  
+  // this only does direct addition - invite is not available,
+  // https://stackoverflow.com/questions/46423674/google-directory-api-manage-invitation-and-request-to-join
   var hasMember = group.hasUser(email);
   Utilities.sleep(1000);
   
@@ -55,6 +56,8 @@ function addMember(email, group) {
   }
 }
 
+// https://stackoverflow.com/questions/20053819/google-spreadsheet-encrypt-cell-content-with-google-apps-script
+// mentions a simple encoder
 function enc(str) {
     var encoded = "";
     for (i=0; i<str.length;i++) {
@@ -71,6 +74,8 @@ function testenc(str) {
 }
 
 function delMember(email, group) {
+  // this does not work for PENDING members,
+  // https://stackoverflow.com/questions/25712388/remove-pending-group-member-via-google-apps-script
   
   var hasMember = group.hasUser(email);
   Utilities.sleep(1000);
